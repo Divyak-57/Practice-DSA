@@ -1,3 +1,4 @@
+// taking extra space in this approach
 class Solution {
     public boolean getpath(TreeNode root,TreeNode n,List<TreeNode> path){
         if(root==null) return false; // no value is there
@@ -18,5 +19,18 @@ class Solution {
         }
         TreeNode lowestCommonAncestor = path1.get(i-1);
         return lowestCommonAncestor;
+    }
+}
+
+
+// no extra space is needed in this approach
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root==null||root==p||root==q) return root;
+        TreeNode l = lowestCommonAncestor(root.left,p,q); // find in leftsubtree
+        TreeNode r = lowestCommonAncestor(root.right,p,q); // find in right subtree
+        if(r==null) return l; // get in leftsubtree return left
+        if(l==null) return r; // get in rightsubtree return right
+        return root; // otherwise root
     }
 }
