@@ -1,3 +1,4 @@
+//Approach:O(n)
 class Solution {
     public int maxProduct(int[] nums) {
         int max1 = 0;
@@ -13,5 +14,15 @@ class Solution {
         }
         
         return (max1 - 1) * (max2 - 1);
+    }
+}
+
+
+//Approach:O(nlog n)
+class Solution {
+    public int maxProduct(int[] nums) {
+        Arrays.sort(nums);
+        int n = nums.length;
+        return (nums[n - 1] - 1) * (nums[n - 2] - 1);
     }
 }
